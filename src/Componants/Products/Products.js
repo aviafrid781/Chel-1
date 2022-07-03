@@ -5,7 +5,7 @@ const Products = ( ) => {
     const [inventory, setInventory] = useState([]);
     
 
-    const [sumtotal, setSumtotal] = useState(0);
+    const [sumtotal, setSumtotal] = useState(null);
     const [cart, setCart] = useState([]);
     const[productCard,setProductCard]=useState('');
   
@@ -62,7 +62,7 @@ const Products = ( ) => {
            
                 <div className="grid grid-cols-2 ">
                    
-                    {products.slice(0, 20).map((p) => (
+                    {products.map((p) => (
                         <div className=" ">
                             <div
                                 className="w-25 h-25 fw-bold"
@@ -75,7 +75,7 @@ const Products = ( ) => {
                             >
                                 <li>Name: {p.name}</li>
                                 <p>ID: {p.id}</p>
-                                <button className="btn btn-outline-warning" onClick={() => handleAddToCart(p)}>add to cart</button>
+                                <button className="decoration-pink-600" onClick={() => handleAddToCart(p)}>add to cart</button>
                             </div>
                         </div>
                     ))}
@@ -87,9 +87,11 @@ const Products = ( ) => {
                     <h1>cart section= {filtered.length}</h1>
                     {filtered.map(mp => (
                         <div className="border fw-bold m-5   bg-success">
+                         
                             <li >productId: {mp.product_id}</li>
                             <li>Price: {mp.unit_price}</li>
                             <li>quantity {mp.qty}</li>
+                           {/* <li>Total:{}</li> */}
                             
                         </div>
                     ))}
